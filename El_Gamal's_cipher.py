@@ -19,7 +19,7 @@ def is_prime(n):  # Проверка: является ли число прос�
 
 
 def generate_private_key(p):  # Генерация случайного числа
-    return random.randint(2, p - 2)
+    return random.randint(2, p - 1)
 
 
 def generate_public_key(p, g, a):  # Вычисление открытого ключа
