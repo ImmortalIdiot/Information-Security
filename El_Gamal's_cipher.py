@@ -18,8 +18,8 @@ def is_prime(n):  # Проверка: является ли число прос�
     return True
 
 
-def generate_private_key(p):  # Генерация случайного числа
-    return random.randint(2, p - 1)
+def generate_random_value(first, second):  # Генерация случайного числа
+    return random.randint(first, second)
 
 
 def generate_public_key(p, g, a):  # Вычисление открытого ключа1
@@ -33,7 +33,7 @@ def encrypt(message, p, g, y):
     print('-' * (len(" Символ  c1  c2") + 4 * 2))
     for char in message:
         m = ord(char)  # Получаем числовое представление символа
-        k = generate_private_key(p)
+        k = generate_random_value(2, p - 1)
         c1 = pow(g, k, p)
         c2 = (pow(y, k, p) * m) % p
         print("   " + char + "\t" + str(c1) + "\t" + str(c2))
@@ -57,8 +57,8 @@ choice = input("Если Вы хотите зашифровать сообщен
 
 if choice == "1":
     p = generate_prime()
-    g = random.randint(2, p - 1)
-    a = generate_private_key(p)
+    g = generate_random_value(2, p - 1)
+    a = generate_random_value(2, p - 2)
     y = generate_public_key(p, g, a)
     print("1 этап: Генерация ключей.\n\n"
           "1) Выбирается случайное простое число p\n"
