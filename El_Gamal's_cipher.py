@@ -1,15 +1,15 @@
-from input_validation import incorrect_user_input, require_not_null, require_symbols_in_string
+from input_validation import incorrect_user_input
 import random
 
 
-def generate_prime(): # Генерация случайного простого числа
+def generate_prime():  # Генерация случайного простого числа
     while True:
         p = random.randint(2, 10**6)
         if is_prime(p):
             return p
 
 
-def is_prime(n): # Проверка: является ли число простым
+def is_prime(n):  # Проверка: является ли число простым
     if n <= 1:
         return False
     for i in range(2, int(n ** 0.5) + 1):
@@ -18,11 +18,11 @@ def is_prime(n): # Проверка: является ли число прост
     return True
 
 
-def generate_private_key(p): # Генерация случайного числа
+def generate_private_key(p):  # Генерация случайного числа
     return random.randint(2, p - 2)
 
 
-def generate_public_key(p, g, a): # Вычисление открытого ключа
+def generate_public_key(p, g, a):  # Вычисление открытого ключа
     return pow(g, a, p)
 
 
